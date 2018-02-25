@@ -1,0 +1,4 @@
+export default {
+    HOME_CHECK_AUTH: 'HOME_CHECK_AUTH',
+    HOME_REMOVE_AUTH: 'HOME_REMOVE_AUTH'
+}

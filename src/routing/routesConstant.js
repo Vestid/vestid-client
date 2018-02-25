@@ -1,0 +1,9 @@
+export const homeRoot = '/';
+export const about = '/about'
+export const why = '/why'
+export const login = '/login';
+export const resetPassword = 'reset-password';
+export const seekingLoan = 'seeking-loan';
+export const offeringLoan = 'offering-loan';
+export const allLoans = 'all-loans';
+export const pageNotFoundRoot = 'page-not-found';

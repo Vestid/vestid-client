@@ -10,8 +10,12 @@ export const LandingContainer = styled('div')`
 
 export const Section = styled('section')`
   position: absolute;
-  width: 100%;
-  font-size: 40em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 38vmax;
+  width: 100vw;
+  height: 90vh;
   color: ${vgray};
   cursor: default;
     p {
@@ -24,10 +28,11 @@ export const Section = styled('section')`
 export const Aside = styled('aside')`
   color: ${({side}) => (side === 'right') ? `${primaryblue}` : 'white'};
   background: ${({side}) => (side === 'right') ? 'white' : `${primaryblue}`};
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-style: italic;
-  padding-top: 265px;
-  font-size: 3em;
+  font-size: 3vmax;
   width: 50%;
     p {
       position: relative;

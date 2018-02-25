@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import {NavLink} from 'react-router-dom'
 import {primaryblue, vgray, muliFont, primaryFont} from '../../../styles/colors_'
+
 export const NavContainer = styled('div')`
     font-weight:100;
     font-family: ${primaryFont};

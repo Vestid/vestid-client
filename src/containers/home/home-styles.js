@@ -8,7 +8,7 @@ export const LandingContainer = styled('div')`
   font-family: ${primaryFont};
 `
 
-export const Section = styled('section')`
+export const Section = styled.section`
   position: absolute;
   display: flex;
   justify-content: center;
@@ -25,7 +25,7 @@ export const Section = styled('section')`
     }
 `
 
-export const Aside = styled('aside')`
+export const Aside = styled.aside`
   color: ${({side}) => (side === 'right') ? `${primaryblue}` : 'white'};
   background: ${({side}) => (side === 'right') ? 'white' : `${primaryblue}`};
   display: flex;

@@ -8,6 +8,8 @@ const Nav = AsyncComponent(() => import('../containers/components/NavBar/NavBar'
 // ============= Dynamic Routing ========================================
 const Home = AsyncComponent(() => import('../containers/home'))
 const Login = AsyncComponent(() => import('../containers/login'))
+const OfferingLoan = AsyncComponent(() => import('../containers/offeringLoan'))
+const SeekingLoan = AsyncComponent(() => import('../containers/seekingLoan'))
 
 class RoutingRoot extends Component {
     constructor(props) {
@@ -21,6 +23,8 @@ class RoutingRoot extends Component {
               <Switch>
                   <Route exact path={route.homeRoot} component={Home}/>
                   <Route path={route.login} component={Login}/>
+                  <Route path={route.seekingLoan} component={SeekingLoan}/>
+                  <Route path={route.offeringLoan} component={OfferingLoan}/>
               </Switch>
           </div>
         )

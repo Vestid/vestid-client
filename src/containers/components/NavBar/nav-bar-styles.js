@@ -18,15 +18,9 @@ export const NavContainer = styled('div')`
 export const Pages = styled(NavLink)`
      padding-bottom: 5px;
      border-bottom: 3px solid white;
-     font-size: 20px;
+     font-size: 1.3rem;
       &:hover {
        border-bottom: 3px solid ${primaryblue};
        transition: all .3s;
-      }
-      h1 {
-        font-size: 2em;
-        span {
-          color: ${vgray}
-        }
       }
 `

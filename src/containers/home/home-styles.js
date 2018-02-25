@@ -36,13 +36,3 @@ export const Aside = styled('aside')`
       text-decoration: underline;
     }
 `
-
-//export const AsideRight = styled('aside')`
-//  color: white;
-//  background: ${primaryblue};
-//  text-align: center;
-//  font-style: italic;
-//  padding-top: 265px;
-//  font-size: 3em;
-//  width: 50%;
-//`

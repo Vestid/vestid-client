@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {LandingContainer, Section, Aside, AsideRight} from './home-styles'
+import {LandingContainer, Section, Aside} from './home-styles'
 import { withRouter} from 'react-router-dom'
 
 class App extends Component {

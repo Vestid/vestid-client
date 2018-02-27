@@ -46,7 +46,6 @@ export const LoginSection = styled('section')`
   display: flex;
   flex-direction: column;
   margin-top: 7vh;
-  ${LoginForm}
     p {
       margin-top: -25px;
       text-align: right;

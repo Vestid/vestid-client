@@ -10,7 +10,6 @@ export const Container = styled.div`
 `
 
 export const AuthNotice = styled.div`
-    padding: 20px;
     font-family: ${primaryFont};
     min-width: 35vw;
     font-size: 1.5rem;

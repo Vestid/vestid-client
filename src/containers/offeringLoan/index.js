@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {LoanNoticeContainer} from '../components/LoanNotice'
 import {AuthNotice, Container} from '../components/AuthNotice'
+import {login, register} from '../../routing/routesConstant'
 import constants from '../../constants'
 
 const {offeringLoanNotice} = constants
@@ -20,7 +21,7 @@ class OfferingLoan extends Component {
                   <p>{offeringLoanNotice}</p>
               </LoanNoticeContainer>
               <AuthNotice>
-                  <p>please <Link to={'test'}><span>login</span></Link> or <Link to={'test'}><span>create</span></Link> an account to fill out the seeking loan form</p>
+                  <p>please <Link to={login}><span>login</span></Link> or <Link to={register}><span>create</span></Link> an account to fill out the seeking loan form</p>
               </AuthNotice>
           </Container>
         )

@@ -1,11 +1,13 @@
 import { combineEpics } from 'redux-observable'
 import homeEpics from '../containers/home/epics'
 import loginEpics from '../containers/login/epics'
+import seekingLoanEpics from '../containers/seekingLoan/epics'
 
 export default ($action, store) => (
     combineEpics(
       homeEpics,
-      loginEpics
+      loginEpics,
+      seekingLoanEpics
     )($action, store)
       .catch((error, stream) => {
           console.log('Uncaught error in root epic: ', error.stack);

@@ -1,19 +1,39 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {LoanNoticeContainer} from '../components/LoanNotice'
-import {AuthNotice, Container} from '../components/AuthNotice'
+import {Container} from '../components/AuthNotice'
 import constants from '../../constants'
-import {FormContainer, FormInput, FormTitle} from '../components/Forms'
+import {FormContainer, FormInput, FormTitle, TextArea, FormButton} from '../components/Forms/FormsElements'
+import {submitSeekingLoanForm, updateSeekingLoanForm} from './actions/actions'
 
 const {seekingLoanNotice} = constants
 
 class SeekingLoan extends Component {
     constructor(props) {
         super(props)
+        this.updateFormContent = this.updateFormContent.bind(this)
     }
 
+     updateFormContent({target}) {
+        const {dispatch} = this.props
+        const {name, value} = target
+         const payload = Object.assign({}, {[name]: value})
+         dispatch(updateSeekingLoanForm(payload))
+     }
+
+     handleFormSubmission(evt) {
+        evt.preventDefault()
+        const {dispatch} = this.props
+        dispatch(submitSeekingLoanForm())
+     }
+
     render() {
+        const {seekingLoan} = this.props.state
+        const inputItems = Object.entries(seekingLoan).map((e, i, a) => (
+          (i <= 5) ? <FormInput key={i} name={a[i][0]} placeholder={a[i][1]} onBlur={this.updateFormContent}/>
+            : <TextArea key={i} name={a[i][0]} placeholder={a[i][1]} onBlur={this.updateFormContent}/>
+        ))
         return (
           <Container>
               <LoanNoticeContainer type={'seeking'}>
@@ -24,11 +44,11 @@ class SeekingLoan extends Component {
                   <FormTitle type={'seeking'}>
                       <span>S</span>eeking<span>L</span>oan<span>F</span>orm
                   </FormTitle>
-                  <FormInput/>
-
+                  { inputItems }
+                  <FormButton onClick={this.handleFormSubmission.bind(this)}>Submit</FormButton>
               </FormContainer>
               {/*<AuthNotice>*/}
-                  {/*<p>please <Link to={'test'}><span>login</span></Link> or <Link to={'test'}><span>create</span></Link> an account to fill out the seeking loan form</p>*/}
+              {/*<p>please <Link to={'test'}><span>login</span></Link> or <Link to={'test'}><span>create</span></Link> an account to fill out the seeking loan form</p>*/}
               {/*</AuthNotice>*/}
           </Container>
         )

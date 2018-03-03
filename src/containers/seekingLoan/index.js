@@ -4,28 +4,21 @@ import {Link, withRouter} from 'react-router-dom'
 import {LoanNoticeContainer} from '../components/LoanNotice'
 import {Container} from '../components/AuthNotice'
 import constants from '../../constants'
-import {FormContainer, FormInput, FormSelect, FormTitle} from '../components/Forms'
+import {FormContainer, FormInput, FormSelect, FormTitle, TextArea} from '../components/Forms'
 
 const {seekingLoanNotice} = constants
 
 class SeekingLoan extends Component {
     constructor(props) {
         super(props)
-        this.submitForm = this.submitForm.bind(this)
-        this.handleInputChange = this.handleInputChange.bind(this)
-        this.handleOptionChange = this.handleOptionChange.bind(this)
+        this.updateFormContent = this.updateFormContent.bind(this)
     }
 
-    handleInputChange(evt) {
-        console.log(evt.target.name)
-        console.log('val: ', evt.target.value)
-    }
-
-    handleOptionChange(evt) {
+     handleOptionChange(evt) {
         console.log('options: ', evt.target.value)
     }
 
-    submitForm(evt) {
+     updateFormContent(evt) {
         console.log('ev: ', evt.target.value)
     }
 
@@ -37,12 +30,11 @@ class SeekingLoan extends Component {
                 return <FormInput key={i}
                                   name={a[i][0]}
                                   placeholder={a[i][1]}
-                                  onBlur={this.submitForm}
-                                  onChange={this.handleInputChange}/>
+                                  onBlur={this.updateFormContent.bind(this)}/>
             } else {
                 selectItems.push(
                   <FormSelect key={e} onChange={this.handleOptionChange}>
-                      { a[i][1].map((elm,idx) => (<option key={`${elm}_${idx}`} value={elm}>{elm}</option>)) }
+                      {/*{ a[i][1].map((elm,idx) => (<option key={`${elm}_${idx}`} value={elm}>{elm}</option>)) }*/}
                   </FormSelect>
                 )
             }
@@ -59,6 +51,7 @@ class SeekingLoan extends Component {
                   </FormTitle>
                   { inputItems }
                   { selectItems }
+                  <TextArea onBlur={this.updateFormContent}/>
               </FormContainer>
               {/*<AuthNotice>*/}
               {/*<p>please <Link to={'test'}><span>login</span></Link> or <Link to={'test'}><span>create</span></Link> an account to fill out the seeking loan form</p>*/}

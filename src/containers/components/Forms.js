@@ -26,6 +26,7 @@ export const FormInput = styled.input`
   height: 5vh;
   margin-bottom: 15px;
   font-size: 1.1rem;
+  padding: 10px;
 `
 export const FormSelect = styled.select`
     border: 2px solid #797979;
@@ -34,6 +35,18 @@ export const FormSelect = styled.select`
     padding-left: 15px;
     font-size: 1.1em;
     color: #0099C5;
+    &:focus {
+      outline: none;
+    }
+`
+
+export const TextArea = styled.textarea`
+  height: 20vh;
+  padding: 10px;
+  border: 2px solid ${vgray};
+  margin-bottom: 15px;
+  color: ${primaryblue};
+  font-size: 1.1rem;
     &:focus {
       outline: none;
     }

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {primaryblue, primaryFont, vgray} from '../../../styles/colors_'
+import {hovergray, hovergreen, primaryblue, primaryFont, vgray} from '../../../styles/colors_'
 
 export const FormContainer = styled.form`
   display: flex;
@@ -38,5 +38,18 @@ export const TextArea = styled.textarea`
   font-size: 1.1rem;
     &:focus {
       outline: none;
+    }
+`
+export const FormButton = styled.button`
+    cursor: pointer;
+    color: #0099C5;
+    background: ${hovergray};
+    font-size: 1.1em;
+    margin-top: 10px;
+    padding: 8px;
+    &:hover {
+      background: ${hovergreen};
+      color: white;
+      transition: all 0.3ms;
     }
 `

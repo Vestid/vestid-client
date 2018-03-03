@@ -4,7 +4,7 @@ import {Link, withRouter} from 'react-router-dom'
 import {LoanNoticeContainer} from '../components/LoanNotice'
 import {Container} from '../components/AuthNotice'
 import constants from '../../constants'
-import {FormContainer, FormInput, FormTitle, TextArea} from '../components/Forms/Forms'
+import {FormContainer, FormInput, FormTitle, TextArea, FormButton} from '../components/Forms/FormsElements'
 import {updateSeekingLoanForm} from './actions/actions'
 
 const {seekingLoanNotice} = constants
@@ -20,6 +20,11 @@ class SeekingLoan extends Component {
         const {name, value} = target
          const payload = Object.assign({}, {[name]: value})
          dispatch(updateSeekingLoanForm(payload))
+     }
+
+     handleFormSubmission(evt) {
+        evt.preventDefault()
+        console.log('state: ', this.props.state.seekingLoan)
      }
 
     render() {
@@ -39,6 +44,7 @@ class SeekingLoan extends Component {
                       <span>S</span>eeking<span>L</span>oan<span>F</span>orm
                   </FormTitle>
                   { inputItems }
+                  <FormButton onClick={this.handleFormSubmission.bind(this)}>Submit</FormButton>
               </FormContainer>
               {/*<AuthNotice>*/}
               {/*<p>please <Link to={'test'}><span>login</span></Link> or <Link to={'test'}><span>create</span></Link> an account to fill out the seeking loan form</p>*/}

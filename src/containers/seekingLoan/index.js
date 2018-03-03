@@ -11,8 +11,9 @@ const {seekingLoanNotice} = constants
 class SeekingLoan extends Component {
     constructor(props) {
         super(props)
+        this.submitForm = this.submitForm.bind(this)
         this.handleInputChange = this.handleInputChange.bind(this)
-        this.updateFormValue = this.updateFormValue.bind(this)
+        this.handleOptionChange = this.handleOptionChange.bind(this)
     }
 
     handleInputChange(evt) {
@@ -21,26 +22,29 @@ class SeekingLoan extends Component {
     }
 
     handleOptionChange(evt) {
+        console.log('options: ', evt.target.value)
     }
 
-    updateFormValue(evt) {
+    submitForm(evt) {
         console.log('ev: ', evt.target.value)
     }
 
     render() {
+        let selectItems = []
         const {seekingLoan} = this.props.state
-        let options
         const inputItems = Object.entries(seekingLoan).map((e, i, a) => {
             if (i <= 2) {
                 return <FormInput key={i}
                                   name={a[i][0]}
                                   placeholder={a[i][1]}
-                                  onBlur={this.updateFormValue}
+                                  onBlur={this.submitForm}
                                   onChange={this.handleInputChange}/>
             } else {
-                console.log('e: ', e)
-                console.log('i: ', i)
-                console.log('a: ', a)
+                selectItems.push(
+                  <FormSelect key={e} onChange={this.handleOptionChange}>
+                      { a[i][1].map((elm,idx) => (<option key={`${elm}_${idx}`} value={elm}>{elm}</option>)) }
+                  </FormSelect>
+                )
             }
         })
         return (
@@ -53,13 +57,8 @@ class SeekingLoan extends Component {
                   <FormTitle type={'seeking'}>
                       <span>S</span>eeking<span>L</span>oan<span>F</span>orm
                   </FormTitle>
-                  {inputItems}
-                  <FormSelect>
-                      <option value="one">one</option>
-                      <option value="two">two</option>
-                      <option value="three">three</option>
-                      <option value="four">three</option>
-                  </FormSelect>
+                  { inputItems }
+                  { selectItems }
               </FormContainer>
               {/*<AuthNotice>*/}
               {/*<p>please <Link to={'test'}><span>login</span></Link> or <Link to={'test'}><span>create</span></Link> an account to fill out the seeking loan form</p>*/}

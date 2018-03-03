@@ -5,7 +5,7 @@ import {LoanNoticeContainer} from '../components/LoanNotice'
 import {Container} from '../components/AuthNotice'
 import constants from '../../constants'
 import {FormContainer, FormInput, FormTitle, TextArea, FormButton} from '../components/Forms/FormsElements'
-import {updateSeekingLoanForm} from './actions/actions'
+import {submitSeekingLoanForm, updateSeekingLoanForm} from './actions/actions'
 
 const {seekingLoanNotice} = constants
 
@@ -24,7 +24,8 @@ class SeekingLoan extends Component {
 
      handleFormSubmission(evt) {
         evt.preventDefault()
-        console.log('state: ', this.props.state.seekingLoan)
+        const {dispatch} = this.props
+        dispatch(submitSeekingLoanForm())
      }
 
     render() {

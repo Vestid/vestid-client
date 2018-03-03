@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {primaryblue, primaryFont, vgray} from '../../styles/colors_'
+import {primaryblue, primaryFont, vgray} from '../../../styles/colors_'
 
 export const FormContainer = styled.form`
   display: flex;
@@ -27,17 +27,6 @@ export const FormInput = styled.input`
   margin-bottom: 15px;
   font-size: 1.1rem;
   padding: 10px;
-`
-export const FormSelect = styled.select`
-    border: 2px solid #797979;
-    height: 5vh;
-    margin-bottom: 15px;
-    padding-left: 15px;
-    font-size: 1.1em;
-    color: #0099C5;
-    &:focus {
-      outline: none;
-    }
 `
 
 export const TextArea = styled.textarea`

@@ -5,7 +5,7 @@ import loginEpics from '../containers/login/epics'
 export default ($action, store) => (
     combineEpics(
       homeEpics,
-      loginEpics
+      loginEpics,
     )($action, store)
       .catch((error, stream) => {
           console.log('Uncaught error in root epic: ', error.stack);

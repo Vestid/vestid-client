@@ -4,7 +4,8 @@ import {Link, withRouter} from 'react-router-dom'
 import {LoanNoticeContainer} from '../components/LoanNotice'
 import {Container} from '../components/AuthNotice'
 import constants from '../../constants'
-import {FormContainer, FormInput, FormSelect, FormTitle, TextArea} from '../components/Forms'
+import {FormContainer, FormInput, FormTitle, TextArea} from '../components/Forms/Forms'
+import {updateSeekingLoanForm} from './actions/actions'
 
 const {seekingLoanNotice} = constants
 
@@ -14,31 +15,19 @@ class SeekingLoan extends Component {
         this.updateFormContent = this.updateFormContent.bind(this)
     }
 
-     handleOptionChange(evt) {
-        console.log('options: ', evt.target.value)
-    }
-
-     updateFormContent(evt) {
-        console.log('ev: ', evt.target.value)
-    }
+     updateFormContent({target}) {
+        const {dispatch} = this.props
+        const {name, value} = target
+         const payload = Object.assign({}, {[name]: value})
+         dispatch(updateSeekingLoanForm(payload))
+     }
 
     render() {
-        let selectItems = []
         const {seekingLoan} = this.props.state
-        const inputItems = Object.entries(seekingLoan).map((e, i, a) => {
-            if (i <= 2) {
-                return <FormInput key={i}
-                                  name={a[i][0]}
-                                  placeholder={a[i][1]}
-                                  onBlur={this.updateFormContent.bind(this)}/>
-            } else {
-                selectItems.push(
-                  <FormSelect key={e} onChange={this.handleOptionChange}>
-                      {/*{ a[i][1].map((elm,idx) => (<option key={`${elm}_${idx}`} value={elm}>{elm}</option>)) }*/}
-                  </FormSelect>
-                )
-            }
-        })
+        const inputItems = Object.entries(seekingLoan).map((e, i, a) => (
+          (i <= 5) ? <FormInput key={i} name={a[i][0]} placeholder={a[i][1]} onBlur={this.updateFormContent}/>
+            : <TextArea key={i} name={a[i][0]} placeholder={a[i][1]} onBlur={this.updateFormContent}/>
+        ))
         return (
           <Container>
               <LoanNoticeContainer type={'seeking'}>
@@ -50,8 +39,6 @@ class SeekingLoan extends Component {
                       <span>S</span>eeking<span>L</span>oan<span>F</span>orm
                   </FormTitle>
                   { inputItems }
-                  { selectItems }
-                  <TextArea onBlur={this.updateFormContent}/>
               </FormContainer>
               {/*<AuthNotice>*/}
               {/*<p>please <Link to={'test'}><span>login</span></Link> or <Link to={'test'}><span>create</span></Link> an account to fill out the seeking loan form</p>*/}

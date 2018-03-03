@@ -3,12 +3,13 @@ const initialState = {
     lastName: 'Doe',
     email: 'john_doe@example.com',
     seekingLoanAmount: ['$500', '$700', '$1000', '$1500', '$2000', 'Other' ],
-    location: '//TODO: react with HTML5 geolocation or JSON file of states',
+    //location: '//TODO: react with HTML5 geolocation or JSON file of states',
     businessType: ['Technology', 'Culinary', 'Creative', 'Retail']
 }
 
 export default (state = initialState, {type, payload}) => {
-    switch(type) {
-
-    }
+    //switch(type) {
+    //
+    //}
+    return state
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {primaryblue, primaryFont, vgray, vshadow} from '../../styles/colors_'
+import {primaryblue, primaryFont, rightshadow, vgray, vshadow} from '../../styles/colors_'
 
 export const LandingContainer = styled('div')`
   display: flex;
@@ -34,6 +34,7 @@ export const Aside = styled.aside`
   font-style: italic;
   font-size: 3vmax;
   width: 50%;
+  box-shadow: ${({side}) => (side !== 'right') ? `${rightshadow}` : 'none'};
     p {
       position: relative;
       z-index: 100;

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {primaryFont} from '../../../styles/colors_'
+import {primaryFont} from '../../styles/colors_'
 
 export const Modal = styled.div`
 	background-color: rgba(0,0,0,0.5);

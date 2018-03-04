@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 const modalRoot = document.getElementById('modal-root')
 
 class ModalPortal extends Component {
@@ -8,7 +10,7 @@ class ModalPortal extends Component {
 		this.el = document.createElement('div')
 	}
 	componentDidMount() {
-		console.log('inside ModalPortal: ', this.props.children)
+		console.log('inside ModalPortal: ', this.props)
 		modalRoot.appendChild(this.el)
 	}
 
@@ -25,5 +27,5 @@ class ModalPortal extends Component {
 		)
 	}
 }
-
-export default ModalPortal
+const mapStateToProps = state => ({state})
+export default withRouter(connect(mapStateToProps)(ModalPortal))

@@ -1,14 +1,13 @@
-import {connect} from 'react-redux'
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
+import {connect} from 'react-redux'
 import constants from '../../constants'
 import {withRouter} from 'react-router-dom'
 import {Container} from '../components/AuthNotice'
 import {LoanNoticeContainer} from '../components/LoanNotice'
 import {submitSeekingLoanForm, verifyFormInput} from './actions/actions'
 import {FormButton, FormContainer, FormInput, FormTitle, TextArea} from '../components/Forms/FormsElements'
-import {Modal} from '../components/Modals/modal-styles'
-import ModalPortal from '../components/Modals/ModalPortal'
+import ModalPortal from '../modals'
+import {Modal} from '../modals/modal-styles'
 
 class SeekingLoan extends Component {
 	constructor(props) {
@@ -53,7 +52,6 @@ class SeekingLoan extends Component {
 						</LoanNoticeContainer>
 					</Modal>
 				</ModalPortal>
-				{/*{ReactDOM.createPortal(<Modal/>, document.getElementById('modal-root'))}*/}
 				<FormContainer>
 					<FormTitle type={'seeking'}>
 						<span>S</span>eeking<span>L</span>oan<span>F</span>orm

@@ -8,14 +8,16 @@ export const LoanNoticeContainer = styled.div`
   border: 3px solid ${({type}) => (type === 'seeking') ? `${primaryblue}`: `${vgray}`};
   display: flex;
   flex-direction: column;
-  max-width: 35vw;
-  max-height: 70vh;
+  max-width: 24vw;
+  min-height: 70vh;
   position:relative;
   background: ${offwhite};
+  
   h1 {
-    color: ${({type}) => (type === 'seeking') ? `${primaryblue}` : `${vgray}`}
+    color: ${({type}) => (type === 'seeking') ? `${primaryblue}` : `${vgray}`};
   }
   p {
-    color: ${({type}) => (type === 'seeking') ? `${vgray}` : `${primaryblue}`}
+    color: ${({type}) => (type === 'seeking') ? `${vgray}` : `${primaryblue}`};
+    line-height: 2rem;
   }
 `

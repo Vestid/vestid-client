@@ -11,8 +11,8 @@ export const LoanNoticeContainer = styled.div`
   max-width: 24vw;
   min-height: 70vh;
   position:relative;
-  background: ${offwhite};
-  
+  background: ${offwhite}; 
+  }
   h1 {
     color: ${({type}) => (type === 'seeking') ? `${primaryblue}` : `${vgray}`};
   }

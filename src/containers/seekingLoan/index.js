@@ -25,7 +25,7 @@ class SeekingLoan extends Component {
         const {dispatch} = this.props
         dispatch(submitSeekingLoanForm())
      }
-
+//TODO: have a reset to put everything back to initial state
     render() {
         const {seekingLoanNotice} = constants
         const seekingLoan = this.props.state.seekingLoan.toJS()

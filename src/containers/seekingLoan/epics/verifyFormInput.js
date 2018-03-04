@@ -8,7 +8,7 @@ export default (action$, store) => {
       .mergeMap(({type, payload}) => {
           const key = Object.keys(payload)[0]
           const value = Object.values(payload)[0].toLowerCase().trim()
-          let format = formatFormInput(key, value)
-          return Observable.of(updateSeekingLoanForm(format))
+          const formatted = formatFormInput(key, value)
+          return Observable.of(updateSeekingLoanForm(formatted))
       })
 }

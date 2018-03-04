@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import {primaryblue, primaryFont, vgray} from '../../styles/colors_'
 
 export const Container = styled.div`
+	//filter: blur(3px);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {primaryblue, primaryFont, vgray} from '../../styles/colors_'
+import {offwhite, primaryblue, primaryFont, vgray} from '../../styles/colors_'
 
 export const LoanNoticeContainer = styled.div`
   font-family: ${primaryFont};
@@ -10,7 +10,8 @@ export const LoanNoticeContainer = styled.div`
   flex-direction: column;
   max-width: 35vw;
   max-height: 70vh;
-  margin-top: 45px;
+  position:relative;
+  background: ${offwhite};
   h1 {
     color: ${({type}) => (type === 'seeking') ? `${primaryblue}` : `${vgray}`}
   }

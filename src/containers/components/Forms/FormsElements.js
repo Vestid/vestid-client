@@ -4,8 +4,9 @@ import {hovergray, hovergreen, invalidred, primaryblue, primaryFont, vgray} from
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 0 30px 30px;
   width: 35vw;
+  background-color: #e9ecef;
 `
 export const FormTitle = styled.h1`
   font-family: ${primaryFont};
@@ -27,6 +28,7 @@ export const FormInput = styled.input`
   margin-bottom: 15px;
   font-size: 1.1rem;
   padding: 10px;
+  box-shadow: 0 0.25rem 0.125rem 0 rgba(0,0,0,.1);
   &:focus {
     border: 2px solid ${({verified}) => !verified ? `${invalidred}` : `${hovergreen}`};
   }

@@ -9,6 +9,8 @@ import {FormButton, FormContainer, FormInput, FormTitle, TextArea} from '../comp
 import ModalPortal from '../modals'
 import {Modal} from '../modals/modal-styles'
 import {updateSeekLoanModal} from '../modals/actions/actions'
+import './style.css'
+
 
 class SeekingLoan extends Component {
 	constructor(props) {
@@ -21,7 +23,7 @@ class SeekingLoan extends Component {
 		const {dispatch} = this.props
 		const {loaded, visible} = this.props.state.modals.toJS().seekingLoanModal
 		const {name} = evt.target.dataset
-		if(name === 'modal-container'){
+		if(name === 'close-modal'){
 			dispatch(updateSeekLoanModal({loaded, visible}))
 		}
 	}
@@ -38,6 +40,9 @@ class SeekingLoan extends Component {
 		dispatch(submitSeekingLoanForm())
 	}
 
+	//componentWillUnmount() {
+	// }
+
 //TODO: have a reset to put everything back to initial state
 	render() {
 		const {seekingLoanNotice} = constants
@@ -45,15 +50,17 @@ class SeekingLoan extends Component {
 		const {seekingLoanModal} = modals.toJS()
 		const {loaded, visible} = seekingLoanModal
 		const inputItems = Object.entries(seekingLoan.toJS()).map((e, i, a) => (
-			(i <= 5) ? <FormInput key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified} onChange={this.updateFormContent}/>
+			(i <= 5) ?
+				<FormInput key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified} onChange={this.updateFormContent}/>
 				: <TextArea key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified} onChange={this.updateFormContent}/>
 		))
 		return (
 			<Container modalOpen={visible}>
 				{(!loaded && visible) ?
 					<ModalPortal>
-						<Modal onClick={this.handleToggleModal.bind(this)} data-name='modal-container'>
+						<Modal onClick={this.handleToggleModal.bind(this)} data-name='close-modal'>
 							<LoanNoticeContainer type={'seeking'}>
+								<i className="fas fa-times" id='x-icon' data-name='close-modal' onClick={this.handleToggleModal.bind(this)}/>
 								<h1>What You're Filling Out</h1>
 								<p>{seekingLoanNotice}</p>
 							</LoanNoticeContainer>

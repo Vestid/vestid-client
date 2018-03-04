@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {hovergray, hovergreen, primaryblue, primaryFont, vgray} from '../../../styles/colors_'
+import {hovergray, hovergreen, invalidred, primaryblue, primaryFont, vgray} from '../../../styles/colors_'
 
 export const FormContainer = styled.form`
   display: flex;
@@ -22,11 +22,14 @@ export const FormTitle = styled.h1`
 `
 
 export const FormInput = styled.input`
-  border: 2px solid ${vgray};
+  border: 2px solid ${({verified}) => verified ? `${hovergreen}`: `${vgray}`};
   height: 5vh;
   margin-bottom: 15px;
   font-size: 1.1rem;
   padding: 10px;
+  &:focus {
+    border: 2px solid ${({verified}) => !verified ? `${invalidred}` : `${hovergreen}`};
+  }
 `
 
 export const TextArea = styled.textarea`
@@ -42,7 +45,7 @@ export const TextArea = styled.textarea`
 `
 export const FormButton = styled.button`
     cursor: pointer;
-    color: #0099C5;
+    color: white;
     background: ${hovergray};
     font-size: 1.1em;
     margin-top: 10px;
@@ -50,6 +53,6 @@ export const FormButton = styled.button`
     &:hover {
       background: ${hovergreen};
       color: white;
-      transition: all 0.3ms;
+      transition: all 0.3s;
     }
 `

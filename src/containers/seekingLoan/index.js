@@ -44,6 +44,8 @@ class SeekingLoan extends Component {
                       <span>S</span>eeking<span>L</span>oan<span>F</span>orm
                   </FormTitle>
                   { inputItems }
+                  {/*TODO: if everything is passing validating have submit have a throbbing animation*/}
+                  {/*TODO: have a progress bar filling in based on how many inputs are validated*/}
                   <FormButton onClick={this.handleFormSubmission.bind(this)}>Submit</FormButton>
               </FormContainer>
               {/*<AuthNotice>*/}

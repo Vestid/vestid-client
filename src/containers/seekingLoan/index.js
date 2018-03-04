@@ -1,13 +1,11 @@
-import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link, withRouter} from 'react-router-dom'
-import {LoanNoticeContainer} from '../components/LoanNotice'
-import {Container} from '../components/AuthNotice'
+import React, {Component} from 'react'
 import constants from '../../constants'
+import {Link, withRouter} from 'react-router-dom'
+import {Container} from '../components/AuthNotice'
+import {LoanNoticeContainer} from '../components/LoanNotice'
+import {submitSeekingLoanForm, updateSeekingLoanForm, verifyFormInput} from './actions/actions'
 import {FormContainer, FormInput, FormTitle, TextArea, FormButton} from '../components/Forms/FormsElements'
-import {submitSeekingLoanForm, updateSeekingLoanForm} from './actions/actions'
-
-const {seekingLoanNotice} = constants
 
 class SeekingLoan extends Component {
     constructor(props) {
@@ -19,7 +17,7 @@ class SeekingLoan extends Component {
         const {dispatch} = this.props
         const {name, value} = target
          const payload = Object.assign({}, {[name]: value})
-         dispatch(updateSeekingLoanForm(payload))
+         dispatch(verifyFormInput(payload))
      }
 
      handleFormSubmission(evt) {
@@ -29,6 +27,7 @@ class SeekingLoan extends Component {
      }
 
     render() {
+        const {seekingLoanNotice} = constants
         const {seekingLoan} = this.props.state
         const inputItems = Object.entries(seekingLoan).map((e, i, a) => (
             (i <= 5) ? <FormInput key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified} onBlur={this.updateFormContent}/>

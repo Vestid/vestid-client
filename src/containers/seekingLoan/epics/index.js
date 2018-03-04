@@ -1,6 +1,8 @@
 import {combineEpics} from 'redux-observable'
-import SeekingLoanSubmission from './SeekingLoanSubmission'
+import seekingLoanSubmission from './seekingLoanSubmission'
+import verifyFormInput from './verifyFormInput'
 
 export default combineEpics(
-  SeekingLoanSubmission
+  seekingLoanSubmission,
+  verifyFormInput
 )

@@ -1,4 +1,5 @@
 import {fromJS} from 'immutable'
+import actionTypes from './actions/actionTypes'
 
 const initialState = fromJS({
 	seekingLoanModal: {
@@ -8,5 +9,13 @@ const initialState = fromJS({
 })
 
 export default (state = initialState, {type = null, payload = null}) => {
-	return state
+	switch(type) {
+		case actionTypes.UPDATE_SEEK_LOAN_MODAL_LOADED: {
+			return state.setIn(['seekingLoanModal'], payload)
+		}
+		case actionTypes.UPDATE_SEEK_LOAN_MODAL_VISIBILITY: {
+			return state.setIn(['seekingLoanModal'], payload)
+		}
+		default: return state
+	}
 }

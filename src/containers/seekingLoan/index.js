@@ -8,6 +8,7 @@ import {submitSeekingLoanForm, verifyFormInput} from './actions/actions'
 import {FormButton, FormContainer, FormInput, FormTitle, TextArea} from '../components/Forms/FormsElements'
 import ModalPortal from '../modals'
 import {Modal} from '../modals/modal-styles'
+import {updateSeekLoanModal} from '../modals/actions/actions'
 
 class SeekingLoan extends Component {
 	constructor(props) {
@@ -17,13 +18,11 @@ class SeekingLoan extends Component {
 
 	handleToggleModal(evt) {
 		evt.stopPropagation()
-		console.log('this.props: ', this.props)
+		const {dispatch} = this.props
 		const {loaded, visible} = this.props.state.modals.toJS().seekingLoanModal
 		const {name} = evt.target.dataset
 		if(name === 'modal-container'){
-			console.log('loaded: ', loaded)
-			console.log('visable: ', visible)
-			console.log('name: ', name)
+			dispatch(updateSeekLoanModal({loaded, visible}))
 		}
 	}
 	updateFormContent({target}) {

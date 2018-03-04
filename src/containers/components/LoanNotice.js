@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {primaryblue, primaryFont, vgray} from '../../styles/colors_'
+import {offwhite, primaryblue, primaryFont, vgray} from '../../styles/colors_'
 
 export const LoanNoticeContainer = styled.div`
   font-family: ${primaryFont};
@@ -8,13 +8,16 @@ export const LoanNoticeContainer = styled.div`
   border: 3px solid ${({type}) => (type === 'seeking') ? `${primaryblue}`: `${vgray}`};
   display: flex;
   flex-direction: column;
-  max-width: 35vw;
-  max-height: 70vh;
-  margin-top: 45px;
+  max-width: 24vw;
+  min-height: 70vh;
+  position:relative;
+  background: ${offwhite};
+  
   h1 {
-    color: ${({type}) => (type === 'seeking') ? `${primaryblue}` : `${vgray}`}
+    color: ${({type}) => (type === 'seeking') ? `${primaryblue}` : `${vgray}`};
   }
   p {
-    color: ${({type}) => (type === 'seeking') ? `${vgray}` : `${primaryblue}`}
+    color: ${({type}) => (type === 'seeking') ? `${vgray}` : `${primaryblue}`};
+    line-height: 2rem;
   }
 `

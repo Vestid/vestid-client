@@ -13,7 +13,7 @@ const initialState = {
 export default (state = initialState, {type = null, payload = null}) => {
     switch(type) {
         case actionTypes.UPDATE_SEEKING_LOAN_FORM:{
-            console.log('payload: ', payload)
+            //console.log('payload: ', payload)
             return Object.assign({}, state, payload)
         }
         default: return state

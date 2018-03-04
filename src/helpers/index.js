@@ -1,12 +1,15 @@
-export const formatFormInput = (input) => {
-    console.log('starting format: ', input)
-    return input.hasOwnProperty('seekingLoanAmount') ? parseIntValue(input) : parseStringValue(input)
-}
+export const formatFormInput = (input) => (
+  input.hasOwnProperty('seekingLoanAmount') ? parseIntValue(input) : parseStringValue(input)
+)
 
-export const parseStringValue = (typeStr) => {
-    console.log('input was a string type: ', typeStr)
-}
+export const parseStringValue = (typeStr) => (
+  Object.values(typeStr).map(str => (
+    (typeof str === 'string') ? Object.assign({}, typeStr, {verified: true}) : Object.assign({}, typeStr, {verified: false})
+  )
+))
 
-export const parseIntValue = (typeInt) => {
-    console.log('input was a integer type: ', typeInt)
-}
+export const parseIntValue = (typeInt) => (
+    Object.values(typeInt).map(num => (
+      (!isNaN(num)) ?  Object.assign({}, typeInt, {verified: true}) : Object.assign({}, typeInt, {verified: false})
+    ))
+)

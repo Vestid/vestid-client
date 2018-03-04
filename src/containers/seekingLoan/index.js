@@ -4,7 +4,7 @@ import constants from '../../constants'
 import {Link, withRouter} from 'react-router-dom'
 import {Container} from '../components/AuthNotice'
 import {LoanNoticeContainer} from '../components/LoanNotice'
-import {submitSeekingLoanForm, updateSeekingLoanForm, verifyFormInput} from './actions/actions'
+import {submitSeekingLoanForm, verifyFormInput} from './actions/actions'
 import {FormContainer, FormInput, FormTitle, TextArea, FormButton} from '../components/Forms/FormsElements'
 
 class SeekingLoan extends Component {
@@ -28,10 +28,10 @@ class SeekingLoan extends Component {
 
     render() {
         const {seekingLoanNotice} = constants
-        const {seekingLoan} = this.props.state
+        const seekingLoan = this.props.state.seekingLoan.toJS()
         const inputItems = Object.entries(seekingLoan).map((e, i, a) => (
-            (i <= 5) ? <FormInput key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified} onBlur={this.updateFormContent}/>
-              : <TextArea key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified} onBlur={this.updateFormContent}/>
+            (i <= 5) ? <FormInput key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified} onChange={this.updateFormContent}/>
+              : <TextArea key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified} onChange={this.updateFormContent}/>
         ))
         return (
           <Container>

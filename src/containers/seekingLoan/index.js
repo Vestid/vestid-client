@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import constants from '../../constants'
 import {withRouter} from 'react-router-dom'
-import {Container} from '../components/AuthNotice'
+import {Container} from './seeking-loan-styles'
 import {LoanNoticeContainer} from '../components/LoanNotice'
 import {submitSeekingLoanForm, verifyFormInput} from './actions/actions'
 import {FormButton, FormContainer, FormInput, FormTitle, TextArea} from '../components/Forms/FormsElements'
@@ -15,10 +15,17 @@ class SeekingLoan extends Component {
 		this.updateFormContent = this.updateFormContent.bind(this)
 	}
 
-	componentDidMount() {
-		console.log('modal: ', this.props.children)
+	handleToggleModal(evt) {
+		evt.stopPropagation()
+		console.log('this.props: ', this.props)
+		const {loaded, visible} = this.props.state.modals.toJS().seekingLoanModal
+		const {name} = evt.target.dataset
+		if(name === 'modal-container'){
+			console.log('loaded: ', loaded)
+			console.log('visable: ', visible)
+			console.log('name: ', name)
+		}
 	}
-
 	updateFormContent({target}) {
 		const {dispatch} = this.props
 		const {name, value} = target
@@ -35,23 +42,26 @@ class SeekingLoan extends Component {
 //TODO: have a reset to put everything back to initial state
 	render() {
 		const {seekingLoanNotice} = constants
-		const seekingLoan = this.props.state.seekingLoan.toJS()
-		const inputItems = Object.entries(seekingLoan).map((e, i, a) => (
-			(i <= 5) ? <FormInput key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified}
-			                      onChange={this.updateFormContent}/>
-				: <TextArea key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified}
-				            onChange={this.updateFormContent}/>
+		const {seekingLoan, modals} = this.props.state
+		const {seekingLoanModal} = modals.toJS()
+		const {loaded, visible} = seekingLoanModal
+		const inputItems = Object.entries(seekingLoan.toJS()).map((e, i, a) => (
+			(i <= 5) ? <FormInput key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified} onChange={this.updateFormContent}/>
+				: <TextArea key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified} onChange={this.updateFormContent}/>
 		))
 		return (
-			<Container>
-				<ModalPortal>
-					<Modal>
-						<LoanNoticeContainer type={'seeking'}>
-							<h1>What You're Filling Out</h1>
-							<p>{seekingLoanNotice}</p>
-						</LoanNoticeContainer>
-					</Modal>
-				</ModalPortal>
+			<Container modalOpen={visible}>
+				{(!loaded && visible) ?
+					<ModalPortal>
+						<Modal onClick={this.handleToggleModal.bind(this)} data-name='modal-container'>
+							<LoanNoticeContainer type={'seeking'}>
+								<h1>What You're Filling Out</h1>
+								<p>{seekingLoanNotice}</p>
+							</LoanNoticeContainer>
+						</Modal>
+					</ModalPortal> :
+					null
+				}
 				<FormContainer>
 					<FormTitle type={'seeking'}>
 						<span>S</span>eeking<span>L</span>oan<span>F</span>orm

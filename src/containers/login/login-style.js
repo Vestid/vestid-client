@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import {boxshadow, hovergreen, logingray, muliFont, primaryblue, vgray} from '../../styles/colors_'
 
-export const Input = styled('input')`
+export const Input = styled.input`
   font-size: 1rem;
   height: 3rem;
   width: 75%;
   padding: 7px;
 `
-export const Button = styled('button')`
+export const Button = styled.button`
   width: 212.5px;
   height: 3.25rem;
   font-size: 1.2rem;
@@ -23,10 +23,10 @@ export const Button = styled('button')`
    }
 `
 
-export const BtnWrap = styled('div')`
+export const BtnWrap = styled.div`
   display: flex;
 `
-export const LoginForm = styled('section')`
+export const LoginForm = styled.section`
   margin: 0 auto;
   width: 425px;
   height: 435px;

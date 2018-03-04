@@ -31,8 +31,8 @@ class SeekingLoan extends Component {
     render() {
         const {seekingLoan} = this.props.state
         const inputItems = Object.entries(seekingLoan).map((e, i, a) => (
-          (i <= 5) ? <FormInput key={i} name={a[i][0]} placeholder={a[i][1]} onBlur={this.updateFormContent}/>
-            : <TextArea key={i} name={a[i][0]} placeholder={a[i][1]} onBlur={this.updateFormContent}/>
+            (i <= 5) ? <FormInput key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified} onBlur={this.updateFormContent}/>
+              : <TextArea key={i} name={a[i][0]} placeholder={a[i][1].placeholder} verified={a[i][1].verified} onBlur={this.updateFormContent}/>
         ))
         return (
           <Container>

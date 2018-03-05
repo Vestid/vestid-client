@@ -23,16 +23,14 @@ export const FormTitle = styled.h1`
 `
 
 export const FormInput = styled.input`
-  border: 2px solid ${({verified}) => verified ? `${hovergreen}`: `${vgray}`};
+  border: 2px solid ${({color}) => `${color}`};
   height: 5vh;
   margin-bottom: 15px;
   font-size: 1.1rem;
   padding: 10px;
   box-shadow: 0 0.25rem 0.125rem 0 rgba(0,0,0,.1);
-  &:focus {
-    border: 2px solid ${({verified}) => !verified ? `${invalidred}` : `${hovergreen}`};
-  }
 `
+
 
 export const TextArea = styled.textarea`
   height: 20vh;

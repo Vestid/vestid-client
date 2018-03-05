@@ -6,6 +6,7 @@ import {Container} from './seeking-loan-styles'
 import {LoanNoticeContainer} from '../components/LoanNotice'
 import {submitSeekingLoanForm, verifyFormInput} from './actions/actions'
 import {FormButton, FormContainer, FormInput, FormTitle, TextArea} from '../components/Forms/FormsElements'
+import Help from '../components/Help'
 import ModalPortal from '../modals'
 import {Modal} from '../modals/modal-styles'
 import {updateSeekLoanModal} from '../modals/actions/actions'
@@ -41,9 +42,9 @@ class SeekingLoan extends Component {
 	}
 
 	//componentWillUnmount() {
+	//TODO: have a reset to put everything back to initial state
 	// }
 
-//TODO: have a reset to put everything back to initial state
 	render() {
 		const {seekingLoanNotice} = constants
 		const {seekingLoan, modals} = this.props.state
@@ -80,6 +81,7 @@ class SeekingLoan extends Component {
 				{/*<AuthNotice>*/}
 				{/*<p>please <Link to={'test'}><span>login</span></Link> or <Link to={'test'}><span>create</span></Link> an account to fill out the seeking loan form</p>*/}
 				{/*</AuthNotice>*/}
+				<Help data-name='close-modal' onClick={this.handleToggleModal.bind(this)}/>
 			</Container>
 		)
 	}

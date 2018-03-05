@@ -7,6 +7,7 @@ export const FormContainer = styled.form`
   padding: 0 30px 30px;
   width: 35vw;
   background-color: #e9ecef;
+  box-shadow:5px 6px 7px #b9b9b9;
 `
 export const FormTitle = styled.h1`
   font-family: ${primaryFont};

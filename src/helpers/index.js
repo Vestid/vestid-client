@@ -11,7 +11,7 @@ export const parseStringValue = (key, str) => (
 )
 
 export const parseIntValue = (key, num) => (
-  (!isNaN(num))
+  (!isNaN(num) && num)
 	  ? Object.assign({}, {[key]:{placeholder: num, verified: true, color: `${hovergreen}`}})
 	  : Object.assign({}, {[key]:{placeholder: num, verified: false, color: `${invalidred}`}})
 )

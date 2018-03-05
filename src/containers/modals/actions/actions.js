@@ -15,3 +15,17 @@ export const updateSeekLoanModal = (payload) => ({
 	payload
 })
 
+export const updateOfferLoanModalVisibility = (payload) => ({
+	type: actionTypes.UPDATE_OFFER_LOAN_MODAL_VISIBILITY,
+	payload
+})
+export const updateOfferLoanModalLoaded = (payload) => ({
+	type: actionTypes.UPDATE_OFFER_LOAN_MODAL_LOADED,
+	payload
+})
+export const updateOfferLoanModal = (payload) => ({
+	type: actionTypes.UPDATE_OFFER_LOAN_MODAL,
+	payload
+})
+
+

@@ -7,7 +7,7 @@ import {Container} from './offering-loan-styles'
 import ModalPortal from '../modals'
 import {Modal} from '../modals/modal-styles'
 import constants from '../../constants'
-import {updateSeekLoanModal} from '../modals/actions/actions'
+import {updateOfferLoanModal} from '../modals/actions/actions'
 import './style.css'
 
 class OfferingLoan extends Component {
@@ -21,7 +21,7 @@ class OfferingLoan extends Component {
 		const {loaded, visible} = this.props.state.modals.toJS().seekingLoanModal
 		const {name} = evt.target.dataset
 		if (name === 'close-modal') {
-			dispatch(updateSeekLoanModal({loaded, visible}))
+			dispatch(updateOfferLoanModal({loaded, visible}))
 		}
 	}
 

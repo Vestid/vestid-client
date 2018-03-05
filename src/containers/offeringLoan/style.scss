@@ -1,0 +1,11 @@
+#x-icon {
+	display: flex;
+	color: #B7B3B3;
+	cursor: pointer;
+	width: 100%;
+	position: relative;
+	left: 10vw;
+	&:hover {
+		color: #FC7474;
+	}
+}

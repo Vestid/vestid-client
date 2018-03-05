@@ -5,6 +5,10 @@ const initialState = fromJS({
 	seekingLoanModal: {
 		loaded: false,
 		visible: true
+	},
+	offeringLoanModal: {
+		loaded: false,
+		visible: true
 	}
 })
 
@@ -15,6 +19,12 @@ export default (state = initialState, {type = null, payload = null}) => {
 		}
 		case actionTypes.UPDATE_SEEK_LOAN_MODAL_VISIBILITY: {
 			return state.setIn(['seekingLoanModal'], payload)
+		}
+		case actionTypes.UPDATE_OFFER_LOAN_MODAL_LOADED: {
+			return state.setIn(['offeringLoanModal'], payload)
+		}
+		case actionTypes.UPDATE_OFFER_LOAN_MODAL_VISIBILITY: {
+			return state.setIn(['offeringLoanModal'], payload)
 		}
 		default: return state
 	}

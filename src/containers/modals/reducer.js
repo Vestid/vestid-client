@@ -5,6 +5,10 @@ const initialState = fromJS({
 	seekingLoanModal: {
 		loaded: false,
 		visible: true
+	},
+	offeringLoanModal: {
+		loaded: false,
+		visible: true
 	}
 })
 

@@ -1,20 +1,12 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import React from 'react'
+import './help.css'
 
-class Help extends Component{
-    constructor(props){
-        super(props)
-    }
-    
-    render(){
-        return(
-        <div>
-            Howdy
-        </div>
-        )
-    }
+export default function Help(props){
+return(
+	<div id='help-container'>
+		<p id='slide-animation'>What am I filling out</p>
+		<i className="far fa-question-circle"/>
+	</div>
+)
+
 }
-
-const mapStateToProps = state => ({state})
-export default withRouter(connect(mapStateToProps)(Help))

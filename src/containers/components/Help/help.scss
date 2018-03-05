@@ -1,0 +1,36 @@
+@keyframes slide {
+	0% {opacity: 0; transform: translateX(160px)}
+	25% {opacity: 0; transform: translateX(120px)}
+	50% {opacity: .2; transform: translateX(80px)}
+	75% {opacity: .4; transform: translateX(40px)}
+	100% {opacity: 1; transform: translateX(0)}
+}
+#help-container {
+	position: absolute;
+	bottom: 4vh;
+	right: 5vw;
+	font-size: 2.5rem;
+	color: #797979;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	&:hover {color: #0099C5}
+	&:hover > #slide-animation {
+		animation: slide 500ms linear;
+		transition: animation;
+		will-change: transform;
+		perspective: 1000px;
+		backface-visibility: hidden;
+		animation-fill-mode: both;
+	}
+	#slide-animation {
+		font-family: 'Muli', sans-serif;
+		font-size: 1.2rem;
+		border: 2px solid #b7b3b3;
+		border-right: none;
+		padding: 5px 6px 5px;
+		transform: translateX(200px);
+		opacity: 0;
+	}
+}

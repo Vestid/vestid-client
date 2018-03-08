@@ -1,4 +1,5 @@
 import FireBase from '../'
+import FireStoreService from '../fireStore'
 
 class AuthService {
 	constructor(){
@@ -11,7 +12,8 @@ class AuthService {
 	checkChange() {
 		this.auth.onAuthStateChanged(user => {
 			if(user) {
-				console.log('user exists: ', user)
+				console.log('user exists: ', user.uid)
+				FireStoreService.checkUID(user, user.uid)
 			} else {
 				console.log('no user: ', user)
 			}
@@ -24,7 +26,7 @@ class AuthService {
 		if(this.auth.currentUser){
 			return this.auth.currentUser
 		} else {
-			this.createUser('dallin.r.parker@gmail.com', 'prey-munk-baw-skag-stesk-soz-rost-steb-smeb-drint-frer-drak-bloct-jict-wusp-nid')
+			this.createUser('anythinger@gmail.com', 'prey-munk-baw-skag-stesk-soz-rost-steb-smeb-drint-frer-drak-bloct-jict-wusp-nid')
 		}
 		//console.log('auth: ', this.auth.currentUser)
 		//return this.auth.currentUser

@@ -10,6 +10,7 @@ class ModalPortal extends Component {
 		this.el = document.createElement('div')
 	}
 	componentDidMount() {
+		console.log('this.props: ', this.props.state)
 		modalRoot.appendChild(this.el)
 	}
 

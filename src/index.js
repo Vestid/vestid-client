@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import createStore from './reducers/store';
 import RoutingRoot from './routing/RoutingRoot'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
+import './services/firestore'
 
 const store = createStore();
 

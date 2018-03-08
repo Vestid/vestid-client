@@ -5,6 +5,7 @@ const initialState = fromJS({
 	authed: false,
 	firstName: null,
 	lastName: null,
+	emailVerified: false,
 	uuid: null
 })
 

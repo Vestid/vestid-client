@@ -2,24 +2,31 @@ import firebase from 'firebase'
 import 'firebase/firestore'
 import 'firebase/auth'
 import 'firebase/messaging'
+import options from './config'
 
-export class FireBase {
+class FireBase {
 	constructor(options) {
 		FireBase.firebase = firebase.initializeApp(options)
-		FireBase.fireStore = firebase.firestore()
-		FireBase.fireAuth = firebase.auth()
-		FireBase.fireMessaging = firebase.messaging()
+		FireBase.fireStore = FireBase.firebase.firestore()
+		FireBase.fireAuth = FireBase.firebase.auth()
+		FireBase.fireMessaging = FireBase.firebase.messaging()
+		FireBase.User = FireBase.firebase.User
+	}
+	getUser() {
+		return FireBase.User
 	}
 
-	getFireStore() {
+	 getFireStore() {
 		return FireBase.fireStore
 	}
 
-	getFireAuth() {
+	 getFireAuth() {
 		return FireBase.fireAuth
 	}
 
-	getFireMessaging() {
+	 getFireMessaging() {
 		return FireBase.fireMessaging
 	}
 }
+
+export default new FireBase(options)

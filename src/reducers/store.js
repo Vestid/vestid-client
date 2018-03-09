@@ -4,7 +4,6 @@ import reduxLoggerTransformImmutable from './reduxLoggerTransformImmutable'
 import {createLogger} from 'redux-logger'
 import combinedReducers from './'
 import epics from '../epics'
-console.log('env: ', process.env.NODE_ENV)
 
 // EPICS MIDDLEWARE ============================
 const epicMiddleware = createEpicMiddleware(epics)
@@ -20,7 +19,6 @@ switch(process.env.NODE_ENV) {
   // set up other enviornment variables
 }
 // TOP LEVEL REDUX STORE ===========================
-console.log('middleware: ', middleware)
 export default () => {
   return createStore(
     combinedReducers,

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import {LandingContainer, Section, Aside} from './home-styles'
 import {offeringLoan, seekingLoan} from '../../routing/routesConstant'
+import AuthService from '../../services/fireAuth'
 
 class App extends Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class App extends Component {
     }
 
     render() {
+      AuthService.authListener()
         return (
           <LandingContainer>
               <Section>

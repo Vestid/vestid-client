@@ -10,7 +10,7 @@ const initialState = fromJS({
 	pages: [
 		{page: 'Home', to: routes.homeRoot, activeStyle},
 		{page: 'About', to: routes.about, activeStyle},
-		{page: <Logo/>, to: routes.homeRoot, activeStyle},
+		{page: <Logo/>, to: routes.homeRoot},
 		{page: 'Why', to: routes.why, activeStyle},
 		{page: 'Login', to: routes.login, activeStyle}
 	]

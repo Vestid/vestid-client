@@ -1,45 +1,30 @@
 import FireBase from '../'
-import FireStoreService from '../fireStore'
+import firebase from 'firebase'
 
 class AuthService {
 	constructor(){
-		this.auth = FireBase.getFireAuth()
-		this.user = FireBase.getUser()
-		//this.checkChange = this.checkChange()
-		//console.log('AuthService: ', this.auth)
-		//console.log('this.user: ', this.user)
+		FireBase.fireAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+		FireBase.fireAuth.createUserWithEmailAndPassword('dallin.r.parker@gmail.com', 'testing')
+			.then(user => {
+			console.log('user: ', user)
+		})
+		//this.auth = FireBase.getFireAuth()
+		//this.app = FireBase.getAppRoot()
+		////console.log('app: ', this.app)
+		//console.log('this.auth: ', this.auth.setPersistence(this.app.auth.Auth.Persistence.LOCAL))
+		//console.log('perse: ', this.auth.Auth.Persistence.LOCAL)
+		//console.log('auth: ', this.auth.setPersistence())
+		//this.user = FireBase.getUser()
 	}
-	//checkChange() {
-	//	this.auth.onAuthStateChanged(user => {
-	//		if(user) {
-	//			console.log('user exists: ', user.uid)
-	//			FireStoreService.checkUID(user, user.uid)
-	//		} else {
-	//			console.log('no user: ', user)
-	//		}
-	//	})
-	//}
 
-	//authCheck() {
-	//	//const authenticate = FireBase.getFireAuth()
-	//	//authenticate.onStateChange()
-	//	if(this.auth.currentUser){
-	//		return this.auth.currentUser
-	//	} else {
-	//		this.createUser('anythinger@gmail.com', 'prey-munk-baw-skag-stesk-soz-rost-steb-smeb-drint-frer-drak-bloct-jict-wusp-nid')
-	//	}
-	//	//console.log('auth: ', this.auth.currentUser)
-	//	//return this.auth.currentUser
-	//}
+	authListener(){
+		//this.auth.onAuthStateChanged(user => {
+		//	console.log('user: ', user)
+		//})
+	}
 
-	//createUser(email, password) {
-	//	this.auth.createUserWithEmailAndPassword(email, password)
-   //   .catch(err => console.log('code: null, ', err.code, 'message', err.message))
-	//}
-	//
-	//signInUser(email, password) {
-	//	this.auth.signInWithEmailAndPassword(email, password)
-	//}
+
 }
 
+//`FireBase.firebase.auth().setPersistence(FireBase.firebase.auth.Auth.Persistence.LOCAL)`
 export default new AuthService()

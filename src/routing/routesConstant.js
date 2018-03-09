@@ -7,4 +7,5 @@ export const seekingLoan = '/seeking-loan';
 export const offeringLoan = '/offering-loan';
 export const allLoans = '/all-loans';
 export const register = '/register';
+export const userProfile = `/user/profile`
 export const pageNotFoundRoot = '/page-not-found';

@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import * as route from './routesConstant'
 import {Route, Switch, withRouter} from 'react-router-dom'
 // ============= Static Routing ========================================
-const Nav = AsyncComponent(() => import('../containers/components/NavBar/NavBar'))
+const Nav = AsyncComponent(() => import('../containers/NavBar/NavBar'))
 // ============= Dynamic Routing ========================================
 const Home = AsyncComponent(() => import('../containers/home'))
 const Login = AsyncComponent(() => import('../containers/login'))

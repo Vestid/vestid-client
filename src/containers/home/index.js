@@ -9,7 +9,6 @@ import AuthService from '../../services/fireAuth'
 class App extends Component {
     constructor(props) {
         super(props)
-      console.log('this.state.: ', props.state.user.toJS())
     }
 
     componentWillMount() {

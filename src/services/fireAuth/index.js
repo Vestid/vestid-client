@@ -2,16 +2,15 @@ import FireBase from '../'
 import firebase from 'firebase'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {bindActionCreators} from 'redux'
-console.log('vin: ', bindActionCreators)
 
 export default class AuthService extends FireBase {
 	constructor(actions, options){
+		console.log('actions: ', actions)
 		super(options)
 		FireBase.fireAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 		this.user = null
 		//TODO: REMOVE THIS.USER
-		console.log('actions: ', actions)
+		AuthService.actions = actions
 	}
 
 	static authListener() {
@@ -33,9 +32,11 @@ export default class AuthService extends FireBase {
 	}
 
 	static signOutUser() {
-		super.fireAuth.signOut()
-			.then(user => console.log('user signed out: ', user))
-			.catch(signOutErr => console.log('signOutErr: ', signOutErr))
+		AuthService.actions.updateAuthInfo({name: 'dallin'})
+		console.log('inside this.actions: ', this.actions)
+		//super.fireAuth.signOut()
+		//	.then(user => console.log('user signed out: ', user))
+		//	.catch(signOutErr => console.log('signOutErr: ', signOutErr))
 	}
 
 	static registerUser(email, password){

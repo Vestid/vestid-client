@@ -14,12 +14,9 @@ import AuthService from './services/fireAuth/'
 const store = createStore();
 const {dispatch} = store
 const boundActions = bindActionCreators(actions, dispatch)
-//console.log('bound: ', boundActions)
+console.log('bound: ', boundActions)
 new AuthService(boundActions, options)
 AuthService.authListener()
-
-console.log('store: ', dispatch)
-console.log('actions: ', actions)
 
 ReactDOM.render(
         <Provider store={store}>

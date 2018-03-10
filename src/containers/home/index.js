@@ -9,9 +9,13 @@ class App extends Component {
     constructor(props) {
         super(props)
     }
+    
+    componentWillMount() {
+      let authed = AuthService.authListener()
+      console.log('authed: ', authed)
+    }
 
     render() {
-      AuthService.authListener()
         return (
           <LandingContainer>
               <Section>

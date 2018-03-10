@@ -8,13 +8,13 @@ const initialState = fromJS({
 	firstName: null,
 	lastName: null,
 	emailVerified: false,
-	uuid: null
+	uid: null
 })
 export default (state = initialState, {type = null, payload = null}) => {
 	switch (type) {
 		case actionTypes.UPDATE_USER_AUTH_INFO: {
 			console.log('payload: ', payload)
-			return state.set(['authed'], true)
+			return state.merge(payload)
 		}
 	}
 	return state

@@ -2,7 +2,6 @@ import firebase from 'firebase'
 import 'firebase/firestore'
 import 'firebase/auth'
 import 'firebase/messaging'
-import options from './config'
 
 export default class FireBase {
 	constructor(options) {
@@ -11,25 +10,6 @@ export default class FireBase {
 		FireBase.fireAuth = FireBase.firebase.auth()
 		FireBase.fireMessaging = FireBase.firebase.messaging()
 		FireBase.User = FireBase.firebase.User
-	}
-	static getAppRoot(){
-		return FireBase.firebase
-	}
-	static getUser() {
-		return FireBase.User
-	}
-
-	 static getFireStore() {
-		return FireBase.fireStore
-	}
-
-	 static getFireAuth() {
-		return FireBase.fireAuth
-	}
-
-	 static getFireMessaging() {
-		return FireBase.fireMessaging
+		console.log('Firebase USER: ', FireBase.User)
 	}
 }
-
-//export default new FireBase(options)

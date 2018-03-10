@@ -6,34 +6,21 @@ export default class AuthService extends FireBase {
 		super(options)
 		FireBase.fireAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 		this.user = null
-		console.log('this.user: ', this.user)
-		//console.log('this.auth: ', this.auth)
-		//console.log('firebase auth: ', FireBase.fireAuth)
-		//FireBase.fireAuth.createUserWithEmailAndPassword('dallin.r.parker@gmail.com', 'testing')
-		//	.then(user => {
-		//	console.log('user: ', user)
-		//}).catch(err => console.log('err: ', err))
-		//this.auth = FireBase.getFireAuth()
-		//this.app = FireBase.getAppRoot()
-		////console.log('app: ', this.app)
-		//console.log('this.auth: ', this.auth.setPersistence(this.app.auth.Auth.Persistence.LOCAL))
-		//console.log('perse: ', this.auth.Auth.Persistence.LOCAL)
-		//console.log('auth: ', this.auth.setPersistence())
-		//this.user = FireBase.getUser()
+		//TODO: REMOVE THIS.USER
 	}
 
 	static authListener() {
 		super.fireAuth.onAuthStateChanged(user => {
 			if (user) {
 				console.log('current User: ', user)
-				this.user = user;
 			} else {
 				console.log('no user found: ')
+
 			}
 		})
 	}
 
-	static loginUser(email, password, info = null) {
+	static signInUser(email, password, info = null) {
 		super.fireAuth.signInWithEmailAndPassword(email, password)
 			.then(loggedInUser => {
 					console.log('logged in user: ', loggedInUser)
@@ -78,7 +65,7 @@ export default class AuthService extends FireBase {
 			.then(success => console.log('email was a success: ', success))
 			.catch(emailErr => console.log('emailErr: ', emailErr))
 	}
-	
+
 	static sendPasswordResetEmail(email) {
 		super.fireAuth.sendPasswordResetEmail(email)
 			.then(success => console.log('password reset email send: ', success))

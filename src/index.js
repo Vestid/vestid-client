@@ -9,6 +9,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import AuthService from './services/fireAuth/'
 import options from './services/config'
 new AuthService(options)
+AuthService.authListener()
 
 const store = createStore();
 

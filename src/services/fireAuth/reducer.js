@@ -10,8 +10,11 @@ const initialState = fromJS({
 })
 
 export default (state = initialState, {type = null, payload = null}) => {
-	//switch(type) {
-	//
-	//}
+	console.log('type: ', type, 'payload: ', payload)
+	switch(type) {
+		case actionTypes.UPDATE_USER_AUTH_INFO: {
+			return state.set(['authed'], true)
+		}
+	}
 	return state
 }

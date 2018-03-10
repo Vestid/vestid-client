@@ -26,16 +26,11 @@ class Login extends Component{
     }
 
     handleLoginClick() {
-      let email = 'dallin.r.parker@gmail.com'
-      let pw = 'dallinparker'
-      AuthService.loginUser(email, pw)
-        //const {dispatch} = this.props
-        //dispatch(validateLoginCreds())
+        const {dispatch} = this.props
+        dispatch(validateLoginCreds())
     }
     handlePasswordReset() {
-	    let pw = 'thisismynewpassword'
-	    let email = 'dallin.r.parker@gmail.com'
-        AuthService.sendPasswordResetEmail(email)
+        //todo: add logic here
     }
 
     render(){

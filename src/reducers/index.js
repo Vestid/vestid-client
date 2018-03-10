@@ -5,8 +5,10 @@ import loginReducer from '../containers/login/reducer'
 import seekingLoanReducer from '../containers/seekingLoan/reducer'
 import modalReducer from '../containers/modals/reducer'
 import navReducer from '../containers/NavBar/reducer'
+import authReducer from '../services/fireAuth/reducer'
 
 const combinedReducers = combineReducers({
+    user: authReducer,
     navbar: navReducer,
     modals: modalReducer,
     login: loginReducer,

@@ -8,8 +8,7 @@ export const LoanNoticeContainer = styled.div`
   border: 3px solid ${({type}) => (type === 'seeking') ? `${primaryblue}`: `${vgray}`};
   display: flex;
   flex-direction: column;
-  max-width: 24vw;
-  min-height: 70vh;
+  max-width: 75vw;
   position:relative;
   background: ${offwhite}; 
   }

@@ -5,7 +5,7 @@ export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   padding: 0 30px 30px;
-  width: 35vw;
+  min-width: 37vw;
   background-color: #e9ecef;
   box-shadow:5px 6px 7px #b9b9b9;
 `

@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {LoginSection, LoginForm, Input, Button, BtnWrap} from './login-style'
 import {validateLoginCreds, updateEmailInput, updatePasswordInput, updateLoginAttempts} from './actions/actions'
 import AuthService from '../../services/fireAuth'
+import {register} from '../../routing/routesConstant'
 
 class Login extends Component{
     constructor(props){
@@ -29,6 +30,7 @@ class Login extends Component{
         const {dispatch} = this.props
         dispatch(validateLoginCreds())
     }
+
     handlePasswordReset() {
         //todo: add logic here
     }
@@ -48,7 +50,9 @@ class Login extends Component{
                     <BtnWrap>
                         <Button side={true}
                                 onClick={this.handleLoginClick.bind(this)}>login</Button>
+                      <Link to={register}>
                         <Button side={false}>register</Button>
+                      </Link>
                     </BtnWrap>
                 </LoginForm>
             </LoginSection>

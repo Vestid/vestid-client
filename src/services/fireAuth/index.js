@@ -1,11 +1,8 @@
 import FireBase from '../'
 import firebase from 'firebase'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
 
 export default class AuthService extends FireBase {
 	constructor(actions, options){
-		console.log('actions: ', actions)
 		super(options)
 		FireBase.fireAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 		this.user = null
@@ -19,37 +16,26 @@ export default class AuthService extends FireBase {
 				console.log('current User: ', user)
 			} else {
 				console.log('no user found: ')
-
 			}
 		})
 	}
 
-	static signInUser(email, password, info = null) {
-		super.fireAuth.signInWithEmailAndPassword(email, password)
-			.then(loggedInUser => {
-					console.log('logged in user: ', loggedInUser)
-			}).catch(loginErr => console.log('loginErr: ', loginErr))
+	static signInUser(email, password) {
+		return super.fireAuth.signInWithEmailAndPassword(email, password)
+			.catch(loginErr => loginErr)
 	}
 
 	static signOutUser() {
-		AuthService.actions.updateAuthInfo({name: 'dallin'})
-		console.log('inside this.actions: ', this.actions)
+		//AuthService.actions.updateAuthInfo({name: 'dallin'})
 		//super.fireAuth.signOut()
 		//	.then(user => console.log('user signed out: ', user))
 		//	.catch(signOutErr => console.log('signOutErr: ', signOutErr))
 	}
 
 	static registerUser(email, password){
-		super.fireAuth.createUserAndRetrieveDataWithEmailAndPassword(email, password)
-			.then(regUser => {
-				console.log('regUser: ', regUser)
-				const {user} = regUser
-				console.log('user: ', user)
-				console.log('emailVerified: ', user.emailVerified)
-				this.sendVerificationEmail(user)
-
-			})
-			.catch(registerError => console.log('registerError: ', registerError))
+		return super.fireAuth.createUserAndRetrieveDataWithEmailAndPassword(email, password)
+			.then(({user}) => (user))
+			.catch(registerError => registerError)
 	}
 
 	static updateUserEmail(email) {

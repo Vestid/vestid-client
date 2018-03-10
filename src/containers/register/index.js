@@ -2,8 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {RegisterForm, RegisterSection, Button, Input, BtnWrap} from './register-style'
-import {updateRegisterForm} from './actions/actions'
-console.log('update: ', updateRegisterForm)
+import {updateRegisterForm, submitRegisterForm} from './actions/actions'
 
 class Register extends Component{
     constructor(props){
@@ -18,8 +17,8 @@ class Register extends Component{
 	}
 
 	handleUserRegistration() {
-		//const {dispatch} = this.props
-		//dispatch(validateLoginCreds())
+		const {dispatch} = this.props
+		dispatch(submitRegisterForm())
 	}
 
     render(){

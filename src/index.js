@@ -8,13 +8,11 @@ import RoutingRoot from './routing/RoutingRoot'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import {bindActionCreators} from 'redux'
 import * as actions from './services/fireAuth/actions/actions'
-
 import options from './services/config'
 import AuthService from './services/fireAuth/'
 const store = createStore();
 const {dispatch} = store
 const boundActions = bindActionCreators(actions, dispatch)
-console.log('bound: ', boundActions)
 new AuthService(boundActions, options)
 AuthService.authListener()
 

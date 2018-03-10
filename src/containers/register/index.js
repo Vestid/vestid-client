@@ -1,33 +1,25 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {register} from '../../routing/routesConstant'
 import {RegisterForm, RegisterSection, Button, Input, BtnWrap} from './register-style'
-import {updateEmailInput, updatePasswordInput, validateLoginCreds} from '../login/actions/actions'
+import {updateRegisterForm} from './actions/actions'
+console.log('update: ', updateRegisterForm)
 
 class Register extends Component{
     constructor(props){
         super(props)
     }
 
-	handleEmailInput({target}) {
+	updateRegisterForm({target}) {
 		const {dispatch} = this.props
-		dispatch(updateEmailInput(target.value))
+		const {name, value} = target
+		let input = Object.assign({}, {[name]:value})
+		dispatch(updateRegisterForm(input))
 	}
 
-	handlePasswordInput({target}) {
-		const {dispatch} = this.props
-		dispatch(updatePasswordInput(target.value))
-	}
-
-	handleKeyPress({key}) {
-		const {dispatch} = this.props
-		return (key === 'Enter') ? dispatch(validateLoginCreds()) : null
-	}
-
-	handleLoginClick() {
-		const {dispatch} = this.props
-		dispatch(validateLoginCreds())
+	handleUserRegistration() {
+		//const {dispatch} = this.props
+		//dispatch(validateLoginCreds())
 	}
 
     render(){
@@ -35,23 +27,22 @@ class Register extends Component{
         <div>
 	        <RegisterSection>
 		        <RegisterForm>
-			        <Input type='text' placeholder='first name'
-			               onChange={this.handleEmailInput.bind(this)}/>
-			        <Input type='text' placeholder='last name'
-			               onChange={this.handleEmailInput.bind(this)}/>
-			        <Input type='email' placeholder='john_doe@vestid.com'
-			               onChange={this.handleEmailInput.bind(this)}/>
-			        <Input type='password' placeholder='***********'
-			               onChange={this.handlePasswordInput.bind(this)}
-			               onKeyPress={this.handleKeyPress.bind(this)}
+			        <Input name='firstName' type='text' placeholder='first name'
+			               onChange={this.updateRegisterForm.bind(this)}/>
+			        <Input name='lastName' type='text' placeholder='last name'
+			               onChange={this.updateRegisterForm.bind(this)}/>
+			        <Input name='email' type='email' placeholder='john_doe@vestid.com'
+			               onChange={this.updateRegisterForm.bind(this)}/>
+			        <Input name='password' type='password' placeholder='***********'
+			               onChange={this.updateRegisterForm.bind(this)}
 			        />
-			        <Input type='password' placeholder='***********'
-			               onChange={this.handlePasswordInput.bind(this)}
-			               onKeyPress={this.handleKeyPress.bind(this)}
-			        />
+			        {/*<Input type='password' placeholder='***********'*/}
+			               {/*onChange={this.handlePasswordInput.bind(this)}*/}
+			               {/*onKeyPress={this.handleKeyPress.bind(this)}*/}
+			        {/*/>*/}
 			        <BtnWrap>
 				        <Button side={true}
-				                onClick={this.handleLoginClick.bind(this)}>login</Button>
+				                onClick={this.handleUserRegistration.bind(this)}>register</Button>
 			        </BtnWrap>
 		        </RegisterForm>
 	        </RegisterSection>

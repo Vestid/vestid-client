@@ -8,7 +8,7 @@ import ModalPortal from '../modals'
 import {Modal} from '../modals/modal-styles'
 import constants from '../../constants'
 import {updateOfferLoanModal} from '../modals/actions/actions'
-import './style.css'
+import '../seekingLoan/style.css'
 
 class OfferingLoan extends Component {
     constructor(props) {

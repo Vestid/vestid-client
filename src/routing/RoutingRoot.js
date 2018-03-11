@@ -12,6 +12,7 @@ const OfferingLoan = AsyncComponent(() => import('../containers/offeringLoan'))
 const SeekingLoan = AsyncComponent(() => import('../containers/seekingLoan'))
 const ResetPassword = AsyncComponent(() => import('../containers/resetPW'))
 const AllLoans = AsyncComponent(() => import('../containers/allLoans'))
+const Register = AsyncComponent(() => import('../containers/register'))
 
 class RoutingRoot extends Component {
     constructor(props) {
@@ -25,6 +26,7 @@ class RoutingRoot extends Component {
               <Switch>
                   <Route exact path={route.homeRoot} component={Home}/>
                   <Route path={route.login} component={Login}/>
+                  <Route path={route.register} component={Register}/>
                   <Route path={route.seekingLoan} component={SeekingLoan}/>
                   <Route path={route.offeringLoan} component={OfferingLoan}/>
                   <Route path={route.resetPassword} component={ResetPassword}/>

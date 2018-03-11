@@ -1,10 +1,12 @@
 import actionTypes from './actions/actionTypes'
+//TODO: convert this to immutable!
 
 const initialState = {
     email: null,
     password: null,
-    authenticated: false
-}
+    authenticated: false,
+    error: null
+  }
 
 export default (state = initialState, {type, payload = null}) => {
     switch (type){
@@ -17,6 +19,9 @@ export default (state = initialState, {type, payload = null}) => {
         case actionTypes.UPDATE_USER_AUTHENTICATION: {
             return Object.assign({}, state, {authenticated: payload})
         }
+      case actionTypes.UPDATE_LOGIN_ERROR: {
+
+      }
         default: {
             return state
         }

@@ -2,61 +2,40 @@ import FireBase from '../'
 import firebase from 'firebase'
 
 export default class AuthService extends FireBase {
-	constructor(options){
+	constructor(actions, options){
 		super(options)
 		FireBase.fireAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 		this.user = null
-		console.log('this.user: ', this.user)
-		//console.log('this.auth: ', this.auth)
-		//console.log('firebase auth: ', FireBase.fireAuth)
-		//FireBase.fireAuth.createUserWithEmailAndPassword('dallin.r.parker@gmail.com', 'testing')
-		//	.then(user => {
-		//	console.log('user: ', user)
-		//}).catch(err => console.log('err: ', err))
-		//this.auth = FireBase.getFireAuth()
-		//this.app = FireBase.getAppRoot()
-		////console.log('app: ', this.app)
-		//console.log('this.auth: ', this.auth.setPersistence(this.app.auth.Auth.Persistence.LOCAL))
-		//console.log('perse: ', this.auth.Auth.Persistence.LOCAL)
-		//console.log('auth: ', this.auth.setPersistence())
-		//this.user = FireBase.getUser()
+		//TODO: REMOVE THIS.USER
+		AuthService.actions = actions
 	}
 
 	static authListener() {
 		super.fireAuth.onAuthStateChanged(user => {
 			if (user) {
 				console.log('current User: ', user)
-				this.user = user;
 			} else {
 				console.log('no user found: ')
 			}
 		})
 	}
 
-	static loginUser(email, password, info = null) {
-		super.fireAuth.signInWithEmailAndPassword(email, password)
-			.then(loggedInUser => {
-					console.log('logged in user: ', loggedInUser)
-			}).catch(loginErr => console.log('loginErr: ', loginErr))
+	static signInUser(email, password) {
+		return super.fireAuth.signInWithEmailAndPassword(email, password)
+			.catch(loginErr => loginErr)
 	}
 
 	static signOutUser() {
-		super.fireAuth.signOut()
-			.then(user => console.log('user signed out: ', user))
-			.catch(signOutErr => console.log('signOutErr: ', signOutErr))
+		//AuthService.actions.updateAuthInfo({name: 'dallin'})
+		//super.fireAuth.signOut()
+		//	.then(user => console.log('user signed out: ', user))
+		//	.catch(signOutErr => console.log('signOutErr: ', signOutErr))
 	}
 
 	static registerUser(email, password){
-		super.fireAuth.createUserAndRetrieveDataWithEmailAndPassword(email, password)
-			.then(regUser => {
-				console.log('regUser: ', regUser)
-				const {user} = regUser
-				console.log('user: ', user)
-				console.log('emailVerified: ', user.emailVerified)
-				this.sendVerificationEmail(user)
-
-			})
-			.catch(registerError => console.log('registerError: ', registerError))
+		return super.fireAuth.createUserAndRetrieveDataWithEmailAndPassword(email, password)
+			.then(({user}) => (user))
+			.catch(registerError => registerError)
 	}
 
 	static updateUserEmail(email) {
@@ -78,7 +57,7 @@ export default class AuthService extends FireBase {
 			.then(success => console.log('email was a success: ', success))
 			.catch(emailErr => console.log('emailErr: ', emailErr))
 	}
-	
+
 	static sendPasswordResetEmail(email) {
 		super.fireAuth.sendPasswordResetEmail(email)
 			.then(success => console.log('password reset email send: ', success))

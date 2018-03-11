@@ -9,7 +9,5 @@ export default class FireBase {
 		FireBase.fireStore = FireBase.firebase.firestore()
 		FireBase.fireAuth = FireBase.firebase.auth()
 		FireBase.fireMessaging = FireBase.firebase.messaging()
-		FireBase.User = FireBase.firebase.User
-		console.log('Firebase USER: ', FireBase.User)
 	}
 }

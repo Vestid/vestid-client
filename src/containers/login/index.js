@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {LoginSection, LoginForm, Input, Button, BtnWrap} from './login-style'
 import {validateLoginCreds, updateEmailInput, updatePasswordInput, updateLoginAttempts} from './actions/actions'
 import AuthService from '../../services/fireAuth'
+import {register} from '../../routing/routesConstant'
 
 class Login extends Component{
     constructor(props){
@@ -26,16 +27,12 @@ class Login extends Component{
     }
 
     handleLoginClick() {
-      let email = 'dallin.r.parker@gmail.com'
-      let pw = 'dallinparker'
-      AuthService.loginUser(email, pw)
-        //const {dispatch} = this.props
-        //dispatch(validateLoginCreds())
+        const {dispatch} = this.props
+        dispatch(validateLoginCreds())
     }
+
     handlePasswordReset() {
-	    let pw = 'thisismynewpassword'
-	    let email = 'dallin.r.parker@gmail.com'
-        AuthService.sendPasswordResetEmail(email)
+        //todo: add logic here
     }
 
     render(){
@@ -53,7 +50,9 @@ class Login extends Component{
                     <BtnWrap>
                         <Button side={true}
                                 onClick={this.handleLoginClick.bind(this)}>login</Button>
+                      <Link to={register}>
                         <Button side={false}>register</Button>
+                      </Link>
                     </BtnWrap>
                 </LoginForm>
             </LoginSection>

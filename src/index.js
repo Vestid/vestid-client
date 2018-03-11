@@ -6,11 +6,15 @@ import { Provider } from 'react-redux'
 import createStore from './reducers/store';
 import RoutingRoot from './routing/RoutingRoot'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import AuthService from './services/fireAuth/'
+import {bindActionCreators} from 'redux'
+import * as actions from './services/fireAuth/actions/actions'
 import options from './services/config'
-new AuthService(options)
-
+import AuthService from './services/fireAuth/'
 const store = createStore();
+const {dispatch} = store
+const boundActions = bindActionCreators(actions, dispatch)
+new AuthService(boundActions, options)
+AuthService.authListener()
 
 ReactDOM.render(
         <Provider store={store}>

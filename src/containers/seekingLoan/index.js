@@ -12,7 +12,6 @@ import {Modal} from '../modals/modal-styles'
 import {updateSeekLoanModal} from '../modals/actions/actions'
 import './style.css'
 
-
 class SeekingLoan extends Component {
 	constructor(props) {
 		super(props)

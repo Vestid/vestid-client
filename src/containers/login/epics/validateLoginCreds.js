@@ -3,7 +3,6 @@ import { Observable } from 'rxjs/Observable'
 import AuthService from '../../../services/fireAuth'
 import {updateAuthInfo} from '../../../services/fireAuth/actions/actions'
 import {push} from "react-router-redux";
-console.log('push: ', push)
 
 export default (action$, store) => {
     return action$.ofType(actionTypes.VALIDATE_LOGIN_CREDS)
@@ -12,7 +11,7 @@ export default (action$, store) => {
           //const user = Object.assign({}, {email: email.toLowerCase(), password})
           return Observable.fromPromise(AuthService.signInUser(email.toLowerCase(), password))
              .mergeMap(response => {
-                 console.log('login response: ', response);
+                 //console.log('login response: ', response);
                  if(response.uid) {
                    const {uid} = response
                    const userInfo = Object.assign({}, {uid, ['authed']:true})

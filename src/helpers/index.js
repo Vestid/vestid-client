@@ -15,3 +15,9 @@ export const parseIntValue = (key, num) => (
 	  ? Object.assign({}, {[key]:{placeholder: num, verified: true, color: `${hovergreen}`}})
 	  : Object.assign({}, {[key]:{placeholder: num, verified: false, color: `${invalidred}`}})
 )
+
+export const parseLoanForm = (form) => {
+	let formObj = {}
+	Object.entries(form).map(e => formObj[e[0]] = e[1].placeholder)
+	return formObj
+}

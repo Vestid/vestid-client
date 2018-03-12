@@ -1,16 +1,12 @@
 import FireBase from '../'
 
-class FireStoreService {
-	constructor() {
-		this.db = FireBase.getFireStore()
+export default class FireStoreService extends FireBase {
+	constructor(options) {
+		super(options)
 	}
 
-	//checkUID(user, uid) {
-	//	console.log('checkUID user: ', user)
-	//	console.log('checkUID uid: ', uid)
-	//	this.db.collection('users').doc(`${uid}`).set({firstname: 'anything', lastname: 'parker'}, {merge: true})
-	//
-	//}
-
+	static addUserLoanForm(form, uid) {
+		return super.fireStore.collection('users').doc(`${uid}`).set(form, {merge: true})
+			.catch(err => (err))
+	}
 }
-export default new FireStoreService()

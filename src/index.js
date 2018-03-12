@@ -2,19 +2,15 @@ import 'rxjs/Rx';
 import React from 'react'
 import './styles/normalize.css'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
+import {Provider} from 'react-redux'
 import createStore from './reducers/store';
 import RoutingRoot from './routing/RoutingRoot'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import {bindActionCreators} from 'redux'
-import * as actions from './services/fireAuth/actions/actions'
 import options from './services/config'
-import AuthService from './services/fireAuth/'
+import FireBase from './services'
+new FireBase(options)
+
 const store = createStore();
-const {dispatch} = store
-const boundActions = bindActionCreators(actions, dispatch)
-new AuthService(boundActions, options)
-AuthService.authListener()
 
 ReactDOM.render(
         <Provider store={store}>

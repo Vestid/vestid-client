@@ -5,9 +5,6 @@ export default class AuthService extends FireBase {
 	constructor(options){
 		super(options)
 		FireBase.fireAuth.setPersistence(firebase.auth.Auth.Persistence.NONE)
-		this.user = null
-		//TODO: REMOVE THIS.USER
-		//AuthService.actions = actions
 	}
 
 	static getUser() {

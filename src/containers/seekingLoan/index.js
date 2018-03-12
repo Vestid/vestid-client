@@ -4,7 +4,7 @@ import constants from '../../constants'
 import {withRouter} from 'react-router-dom'
 import {Container} from './seeking-loan-styles'
 import {LoanNoticeContainer} from '../components/LoanNotice'
-import {submitSeekingLoanForm, verifyFormInput} from './actions/actions'
+import {clearSeekingLoanForm, submitSeekingLoanForm, verifyFormInput} from './actions/actions'
 import {FormButton, FormContainer, FormInput, FormTitle, TextArea} from '../components/Forms/FormsElements'
 import Help from '../components/Help'
 import ModalPortal from '../modals'
@@ -40,9 +40,10 @@ class SeekingLoan extends Component {
 		dispatch(submitSeekingLoanForm())
 	}
 
-	//componentWillUnmount() {
-	//TODO: have a reset to put everything back to initial state
-	// }
+	componentWillUnmount() {
+		const {dispatch} = this.props
+		dispatch(clearSeekingLoanForm())
+	}
 
 	render() {
 		const {seekingLoanNotice} = constants

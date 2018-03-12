@@ -15,6 +15,8 @@ export default (state = initialState, {type = null, payload = null}) => {
 	switch (type) {
 		case actionTypes.UPDATE_SEEKING_LOAN_FORM:
 			return state.merge(payload)
+		case actionTypes.CLEAR_SEEKING_LOAN_FORM:
+			return state.merge(initialState.toJS())
 		default:
 			return state
 	}

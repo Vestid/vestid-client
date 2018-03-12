@@ -9,8 +9,7 @@ const initialState = fromJS({
 	seekingLoanAmount: {placeholder: 'loan amount you are seeking', verified: false, color: `${vgray}`},
 	businessType: {placeholder: 'type of business, e.g. technology, culinary, etc.', verified: false, color: `${vgray}`},
 	location: {placeholder: 'where are you located', verified: false, color: `${vgray}`},
-	description: {placeholder: 'please describe in a couple sentences the "why" behind your business and what this loan will be used for', verified: false, color: null
-	}
+	description: {placeholder: 'please describe in a couple sentences the "why" behind your business and what this loan will be used for', verified: false, color: null}
 })
 export default (state = initialState, {type = null, payload = null}) => {
 	switch (type) {

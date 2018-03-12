@@ -6,7 +6,7 @@ export const Input = styled.input`
   height: 3rem;
   width: 75%;
   padding: 7px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 `
 export const Button = styled.button`
   width: 426px;
@@ -29,7 +29,7 @@ export const BtnWrap = styled.div`
 export const RegisterForm = styled.section`
   margin: 0 auto;
   width: 425px;
-  padding: 3vh 0 0;
+  padding: 6vh 0 0;
   box-shadow: ${boxshadow};
   background: ${primaryblue};
   display: flex;

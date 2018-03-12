@@ -36,6 +36,10 @@ class Login extends Component{
     }
 
     render(){
+      const {authed} = this.props.state.user.toJS()
+      if(authed){
+            this.props.history.goBack()
+      }
         return(
         <div>
             <LoginSection>

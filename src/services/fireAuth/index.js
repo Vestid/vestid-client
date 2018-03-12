@@ -2,12 +2,12 @@ import FireBase from '../'
 import firebase from 'firebase'
 
 export default class AuthService extends FireBase {
-	constructor(actions, options){
+	constructor(options){
 		super(options)
-		FireBase.fireAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+		FireBase.fireAuth.setPersistence(firebase.auth.Auth.Persistence.NONE)
 		this.user = null
 		//TODO: REMOVE THIS.USER
-		AuthService.actions = actions
+		//AuthService.actions = actions
 	}
 
 	static authListener() {

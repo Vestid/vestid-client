@@ -50,8 +50,8 @@ class SeekingLoan extends Component {
 		const {seekingLoanModal} = modals.toJS()
 		const {loaded, visible} = seekingLoanModal
 		const inputItems = Object.entries(seekingLoan.toJS()).map((e, i, a) => (
-			(i <= 5) ?
-				<FormInput key={i} name={a[i][0]} placeholder={a[i][1].placeholder} color={a[i][1].color} onChange={this.updateFormContent}/>
+			(i <= 5)
+				? <FormInput key={i} name={a[i][0]} placeholder={a[i][1].placeholder} color={a[i][1].color} onChange={this.updateFormContent}/>
 				: <TextArea key={i} name={a[i][0]} placeholder={a[i][1].placeholder} color={a[i][1].color} onChange={this.updateFormContent}/>
 		))
 		return (

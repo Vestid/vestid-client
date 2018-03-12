@@ -10,4 +10,8 @@ export default class FireBase {
 		FireBase.fireAuth = FireBase.firebase.auth()
 		FireBase.fireMessaging = FireBase.firebase.messaging()
 	}
+
+	static user() {
+		return firebase.auth().currentUser
+	}
 }

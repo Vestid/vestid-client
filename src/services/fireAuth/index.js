@@ -10,6 +10,10 @@ export default class AuthService extends FireBase {
 		//AuthService.actions = actions
 	}
 
+	static getUser() {
+		return super.user()
+	}
+
 	static authListener() {
 		super.fireAuth.onAuthStateChanged(user => {
 			if (user) {
